@@ -1,0 +1,38 @@
+<div class="container">
+  <button
+    [routerLink]="['/products/create']"
+    routerLinkActive="router-link-active"
+  >
+    Ir para o cadastro
+  </button>
+  <div class="row">
+    @for (product of products; track product.name) {
+    <div class="col-3">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ product.name }}</mat-card-title>
+        </mat-card-header>
+        <img
+          mat-card-image
+          [src]="product.image"
+          alt="Foto do produto {{ product.name }}"
+        />
+        <mat-card-content>
+          <p>
+            {{ product.description }}
+          </p>
+          <p>{{ product.price }}</p>
+          <p>Quantidade: {{ product.qty }}</p>
+        </mat-card-content>
+        <mat-card-actions class="d-flex justify-content-end">
+          <button mat-flat-button color="primary">Editar</button>
+          <button mat-stroked-button color="warn">Excluir</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    } @empty {
+    <div class="col-12 text-center">Nenhum produto cadastrado</div>
+    }
+  </div>
+</div>
