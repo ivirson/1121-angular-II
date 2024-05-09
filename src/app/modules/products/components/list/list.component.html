@@ -1,10 +1,4 @@
 <div class="container">
-  <button
-    [routerLink]="['/products/create']"
-    routerLinkActive="router-link-active"
-  >
-    Ir para o cadastro
-  </button>
   <div class="row">
     @for (product of products; track product.name) {
     <div class="col-3">
@@ -26,8 +20,20 @@
           <p>Quantidade: {{ product.qty }}</p>
         </mat-card-content>
         <mat-card-actions class="d-flex justify-content-end">
-          <button mat-flat-button color="primary">Editar</button>
-          <button mat-stroked-button color="warn">Excluir</button>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="editProduct(product.id!)"
+          >
+            Editar
+          </button>
+          <button
+            mat-stroked-button
+            color="warn"
+            (click)="openDialog(product.id!)"
+          >
+            Excluir
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

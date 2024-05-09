@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { RouterModule } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { Router, RouterModule } from '@angular/router';
 import { Subject, first } from 'rxjs';
+import { ConfirmationModalComponent } from '../../../../commons/components/confirmation-modal/confirmation-modal.component';
 import { Product } from '../../models/product.model';
 import { ProductsService } from '../../services/products.service';
 
@@ -25,7 +27,11 @@ export class ListComponent implements OnInit, OnDestroy {
   //   }, 1000);
   // });
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    public dialog: MatDialog,
+    private router: Router
+  ) {}
 
   // Executado uma só vez, quando o componente é iniciado e após receber todos os dados provenientes de @Input()
   ngOnInit(): void {
@@ -48,6 +54,43 @@ export class ListComponent implements OnInit, OnDestroy {
           console.log(err);
         },
       });
+  }
+
+  onDelete(id: string): void {
+    this.productsService
+      .deleteProduct(id)
+      .pipe(first())
+      .subscribe({
+        complete: () => {
+          this.getProducts();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+
+  openDialog(id: string): void {
+    const dialog = this.dialog.open(ConfirmationModalComponent, {
+      width: '250px',
+      disableClose: true,
+      data: {
+        id,
+      },
+    });
+
+    dialog
+      .afterClosed()
+      .pipe(first())
+      .subscribe((res) => {
+        if (res) {
+          this.onDelete(id);
+        }
+      });
+  }
+
+  editProduct(id: string): void {
+    this.router.navigate(['products', 'edit', id]);
   }
 
   // Executado quando o componente for destruído, ou seja, quando ele for removido da tela
