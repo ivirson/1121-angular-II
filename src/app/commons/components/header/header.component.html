@@ -1,6 +1,19 @@
 <mat-toolbar>
   <span>Products Crud</span>
   <span class="spacer"></span>
+
+  <!-- @for (item of filteredMenu; track $index) {
+  <button
+    mat-button
+    aria-label="Botão Cadastrar produto"
+    [routerLink]="item.link"
+    (click)="item.action ? item.action() : null"
+  >
+    {{ item.title }}
+  </button>
+  } -->
+
+  @if (authService.checkAuthStatus() | async) {
   <button
     mat-button
     aria-label="Botão Cadastrar produto"
@@ -16,6 +29,16 @@
   >
     Produtos
   </button>
+
+  <button
+    mat-flat-button
+    aria-label="Botão login"
+    color="primary"
+    (click)="authService.logout()"
+  >
+    Logout
+  </button>
+  } @else {
   <button
     mat-flat-button
     aria-label="Botão login"
@@ -24,4 +47,5 @@
   >
     Login
   </button>
+  }
 </mat-toolbar>

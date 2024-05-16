@@ -27,10 +27,9 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((err: any) => {
       if (err.status === 401 || err.status === 403) {
         console.error(err.error.message);
-        router.navigate(['auth', 'login']);
+        // router.navigate(['auth', 'login']);
       }
 
-      // TO DO implementar redirect
       return throwError(() => err);
     })
   );
