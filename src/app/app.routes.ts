@@ -1,11 +1,6 @@
 import { Routes } from '@angular/router';
+import { NotFoundComponent } from './commons/components/not-found/not-found.component';
 import { authGuard } from './core/guards/auth.guard';
-import { AuthComponent } from './modules/auth/auth.component';
-import { LoginComponent } from './modules/auth/components/login/login.component';
-import { RegisterComponent } from './modules/auth/components/register/register.component';
-import { CreateComponent } from './modules/products/components/create/create.component';
-import { ListComponent } from './modules/products/components/list/list.component';
-import { ProductsComponent } from './modules/products/products.component';
 
 export const routes: Routes = [
   {
@@ -15,35 +10,23 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    component: AuthComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./modules/auth/auth.routes').then((m) => m.authRoutes),
   },
   {
     path: 'products',
-    component: ProductsComponent,
     canActivate: [authGuard],
-    children: [
-      {
-        path: '',
-        component: ListComponent,
-      },
-      {
-        path: 'create',
-        component: CreateComponent,
-      },
-      {
-        path: 'edit/:id',
-        component: CreateComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./modules/products/products.routes').then(
+        (m) => m.productsRoutes
+      ),
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found',
   },
 ];

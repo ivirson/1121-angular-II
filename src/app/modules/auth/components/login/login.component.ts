@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
 import { first } from 'rxjs';
 import { Constants } from '../../../../commons/constants/constants.enum';
+import { UserRoles } from '../../constants/user-roles.enum';
 import { UserCredentials } from '../../models/user-credentials.model';
 import { AuthService } from '../../services/auth.service';
 
@@ -51,6 +52,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (res) => {
           localStorage.setItem(Constants.TOKEN_KEY, `Bearer ${res.token}`);
+          localStorage.setItem(Constants.USER_ROLES, UserRoles.USER);
           this.router.navigate(['']);
         },
         error: (err) => {

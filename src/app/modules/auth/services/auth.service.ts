@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 import { Constants } from '../../../commons/constants/constants.enum';
+import { UserRoles } from '../constants/user-roles.enum';
 import { AuthenticatedUser } from '../models/authenticated-user.model';
 import { UserCredentials } from '../models/user-credentials.model';
 import { User } from '../models/user.model';
@@ -32,8 +33,16 @@ export class AuthService {
     return this.isLoggedIn$;
   }
 
+  checkUserRoles(): Observable<UserRoles> {
+    const userRole = localStorage.getItem(Constants.USER_ROLES) as UserRoles;
+    return new Observable<UserRoles>((observer) => {
+      observer.next(userRole);
+    });
+  }
+
   logout(): void {
     localStorage.removeItem(Constants.TOKEN_KEY);
+    localStorage.removeItem(Constants.USER_ROLES);
     this.checkAuthStatus();
     this.router.navigate(['auth', 'login']);
   }
