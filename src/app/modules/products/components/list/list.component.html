@@ -17,13 +17,14 @@
             {{ product.description }}
           </p>
           <p>{{ product.price }}</p>
-          <p>Quantidade: {{ product.qty }}</p>
+          <p i18n>Quantidade: {{ product.qty }}</p>
         </mat-card-content>
         <mat-card-actions class="d-flex justify-content-end">
           <button
             mat-flat-button
             color="primary"
             (click)="editProduct(product.id!)"
+            i18n
           >
             Editar
           </button>
@@ -31,6 +32,7 @@
             mat-stroked-button
             color="warn"
             (click)="openDialog(product.id!)"
+            i18n
           >
             Excluir
           </button>
@@ -38,7 +40,7 @@
       </mat-card>
     </div>
     } @empty {
-    <div class="col-12 text-center">Nenhum produto cadastrado</div>
+    <div class="col-12 text-center" i18n>Nenhum produto cadastrado</div>
     }
   </div>
 </div>

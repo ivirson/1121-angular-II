@@ -18,6 +18,7 @@
     mat-button
     aria-label="Botão Cadastrar produto"
     routerLink="/products/create"
+    i18n
   >
     Cadastrar
   </button>
@@ -26,6 +27,7 @@
     mat-button
     aria-label="Botão listar produtos"
     routerLink="/products"
+    i18n
   >
     Produtos
   </button>
@@ -35,8 +37,9 @@
     aria-label="Botão login"
     color="primary"
     (click)="authService.logout()"
+    i18n
   >
-    Logout
+    Sair
   </button>
   } @else {
   <button
@@ -44,8 +47,9 @@
     aria-label="Botão login"
     color="primary"
     routerLink="/auth/login"
+    i18n
   >
-    Login
+    Entrar
   </button>
   }
 </mat-toolbar>

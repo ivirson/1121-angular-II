@@ -1,83 +1,83 @@
 <div class="container">
-  <h1 class="mt-5">Cadastrar usuário</h1>
+  <h1 class="mt-5" i18n>Cadastrar usuário</h1>
 
   <form [formGroup]="form" (ngSubmit)="register()">
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Nome</mat-label>
+          <mat-label i18n>Nome</mat-label>
           <input matInput formControlName="name" />
-          <mat-error>O campo Nome é obrigatório</mat-error>
+          <mat-error i18n>O campo Nome é obrigatório</mat-error>
         </mat-form-field>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Profissão</mat-label>
+          <mat-label i18n>Profissão</mat-label>
           <input matInput formControlName="profession" />
-          <mat-error>O campo Profissão é obrigatório</mat-error>
+          <mat-error i18n>O campo Profissão é obrigatório</mat-error>
         </mat-form-field>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Data Nasc.</mat-label>
+          <mat-label i18n>Data Nasc.</mat-label>
           <input type="date" matInput formControlName="birthDate" />
-          <mat-error>O campo Data Nasc. é obrigatório</mat-error>
+          <mat-error i18n>O campo Data Nasc. é obrigatório</mat-error>
         </mat-form-field>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>CPF</mat-label>
+          <mat-label i18n>CPF</mat-label>
           <input matInput formControlName="documentNumber" />
-          <mat-error>O campo CPF é obrigatório</mat-error>
+          <mat-error i18n>O campo CPF é obrigatório</mat-error>
         </mat-form-field>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>E-mail</mat-label>
+          <mat-label i18n>E-mail</mat-label>
           <input matInput formControlName="email" />
-          <mat-error>O campo E-mail é obrigatório</mat-error>
+          <mat-error i18n>O campo E-mail é obrigatório</mat-error>
         </mat-form-field>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Senha</mat-label>
+          <mat-label i18n>Senha</mat-label>
           <input type="password" matInput formControlName="password" />
-          <mat-error>O campo Senha é obrigatório</mat-error>
+          <mat-error i18n>O campo Senha é obrigatório</mat-error>
         </mat-form-field>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Telefone</mat-label>
+          <mat-label i18n>Telefone</mat-label>
           <input matInput formControlName="phone" />
-          <mat-error>O campo Telefone é obrigatório</mat-error>
+          <mat-error i18n>O campo Telefone é obrigatório</mat-error>
         </mat-form-field>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Renda</mat-label>
+          <mat-label i18n>Renda</mat-label>
           <input matInput formControlName="income" />
-          <mat-error>O campo Renda é obrigatório</mat-error>
+          <mat-error i18n>O campo Renda é obrigatório</mat-error>
         </mat-form-field>
       </div>
     </div>
 
     <div class="row mb-3">
       <div class="col-12">
-        <button mat-flat-button color="primary" [disabled]="form.invalid">
+        <button mat-flat-button color="primary" [disabled]="form.invalid" i18n>
           Salvar
         </button>
       </div>

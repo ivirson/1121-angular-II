@@ -1,13 +1,13 @@
 <div class="container">
-  <h1 class="mt-5">Cadastrar produto</h1>
+  <h1 class="mt-5" i18n>Cadastrar produto</h1>
 
   <form [formGroup]="form" (ngSubmit)="onSave()">
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Nome</mat-label>
+          <mat-label i18n>Nome</mat-label>
           <input matInput formControlName="name" />
-          <mat-error>O campo Nome é obrigatório</mat-error>
+          <mat-error i18n>O campo Nome é obrigatório</mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -15,9 +15,9 @@
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Descrição</mat-label>
+          <mat-label i18n>Descrição</mat-label>
           <input matInput formControlName="description" />
-          <mat-error>O campo Descrição é obrigatório</mat-error>
+          <mat-error i18n>O campo Descrição é obrigatório</mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -25,7 +25,7 @@
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Preço</mat-label>
+          <mat-label i18n>Preço</mat-label>
           <input matInput formControlName="price" />
           <mat-error>O campo Preço é obrigatório</mat-error>
         </mat-form-field>
@@ -35,7 +35,7 @@
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Quantidade</mat-label>
+          <mat-label i18n>Quantidade</mat-label>
           <input matInput formControlName="qty" />
           <mat-error>O campo Quantidade é obrigatório</mat-error>
         </mat-form-field>
@@ -45,7 +45,7 @@
     <div class="row mb-3">
       <div class="col-12">
         <mat-form-field appearance="outline">
-          <mat-label>Imagem</mat-label>
+          <mat-label i18n>Imagem</mat-label>
           <input matInput formControlName="image" />
           <mat-error>O campo Imagem é obrigatório</mat-error>
         </mat-form-field>
@@ -54,7 +54,7 @@
 
     <div class="row mb-3">
       <div class="col-12">
-        <button mat-flat-button color="primary" [disabled]="form.invalid">
+        <button mat-flat-button color="primary" [disabled]="form.invalid" i18n>
           Salvar
         </button>
       </div>
